@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+My name is {{ myname}}
+
+<h1>My Todo List</h1>
+
+
+<ol id="todolist">
+{% for item in todolist %}
+	<li>{{item.description }}</li>
+{% endfor %}
+</ol>
+
+<input id="additeme" type="text"/>
+
+<script>
+getitems = function(e)
+{
+	$.ajax({
+		type: "GET"
+		datatype: "json"
+		success: function (data){
+			$("#todolist").html("")
+			data.forEach(fuction(item))
+			{
+				toadd ="<li>" + item["description"] + "</li>"; $("#todolist").append(toadd)
+			}
+		}
+
+	})
+
+}	
+</script>
+
+{% endbloc %}
